@@ -1,0 +1,38 @@
+{% include 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<div class="card">
+    <div class="card-header">
+         <button class="btn btn-primary" onclick="location.href = '/authors/first_name_field-last_name_field';"> Create a new Author</button>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead class="bg-dark text-light">
+                <td> Authors</td>
+<!--                <td>Biography</td>-->
+<!--                <td>Facebook</td>-->
+<!--                <td>LinkedIn</td>-->
+<!--                <td>Google Plus</td>-->
+<!--                <td>User</td>-->
+<!--                <td>Gallery</td>-->
+            </thead>
+            {% for record in records %}
+            <tr>
+                <td><a href="/authors/{{record.id}}">{{record.first_name}} {{record.last_name}}</a></td>
+<!--                <td>{{record.biography}}</td>--><!--
+                <td>{{record.facebook_url}}</td>
+                <td>{{record.linkedin_url}}</td>
+                <td>{{record.google_plus_url}}</td>
+                <td>{{record.user}}</td>
+                <td>{{record.image_gallery}}</td>-->
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+</body>
+</html>

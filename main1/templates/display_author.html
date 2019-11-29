@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+{% block container %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create an Author</title>
+</head>
+<body>
+<div class="card">
+    <div class="card-header">
+        <h5 class="text-center">
+           <span class="oi oi-cloudy" title="icon name" aria-hidden="true"></span> Add new Author
+        </h5>
+
+        <p>
+            <button class="btn btn-primary" onclick="location.href = '/authors'"> show all Authors</button>
+        </p>
+    </div>
+    <div class="card-body">
+        <table class="tbl">
+                <tr><td>Name :</td> <td>{{record.first_name}}&nbsp{{record.last_name}}<td/></tr>
+                <tr><td>Photo :</td> <td><img src="{% static '{{record.author_image}}' %}" /></td></tr>
+                <tr><td>biography :</td> <td>{{record.biography}}</td></tr>
+                <tr><td>Linked In :</td> <td>{{record.linkedin_url}}</td></tr>
+                <tr><td>Google Plus :</td> <td>{{record.google_plus_url}}</td></tr>
+                <tr><td>User :</td> <td>{{record.user}}</td></tr>
+                <tr><td>Gallery :</td> <td>{{record.image_gallery}}</td></tr>
+        </table>
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block container %}
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create an Event</title>
+</head>
+<body>
+<div class="card">
+    <div class="card-header">
+        <h5 class="text-center">
+           <span class="oi oi-cloudy" title="icon name" aria-hidden="true"></span> Create Event
+        </h5>
+
+        <p>
+            <button class="btn btn-primary" onclick="location.href = '/test/events'"> show all Events</button>
+        </p>
+    </div>
+    <div class="card-body">
+    <form method="post" action="/test/event/">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input class="btn btn-default" type="submit" value="Create Event">
+    </form>
+    </div>
+</div>
+
+</body>
+</html>
+{% endblock %}

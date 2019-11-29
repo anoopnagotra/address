@@ -1,0 +1,30 @@
+{% include 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<div class="card">
+    <div class="card-header">
+         <button class="btn btn-primary" onclick="location.href = '/test/event/';"> Create a new Event</button>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead class="bg-dark text-light">
+                <td>Event Name</td>
+                <td>Start Time</td>
+                <td>End Time</td>
+            </thead>
+            {% for record in records %}
+            <tr>
+                <td>{{record.event_name}}</td>
+                <td>{{record.event_start}}</td>
+                <td>{{record.event_end}}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+</body>
+</html>

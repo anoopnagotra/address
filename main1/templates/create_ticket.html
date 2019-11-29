@@ -1,0 +1,29 @@
+{% include 'base.html' %}
+{% load bootstrap4 %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create a Ticket</title>
+</head>
+<body>
+<div class="card">
+    <div class="card-header">
+        <h5 class="text-center">
+           <span class="oi oi-cloudy" title="icon name" aria-hidden="true"></span> Create Ticket
+        </h5>
+
+        <p>
+            <button class="btn btn-primary" onclick="location.href = '/test/tickets'"> show all Tickets</button>
+        </p>
+    </div>
+    <div class="card-body">
+    <form method="post" action="/test/ticket/" enctype="multipart/form-data">
+        {% csrf_token %}
+        {% bootstrap_form form %}
+        <input class="btn btn-default" type="submit" value="Create Ticket">
+    </form>
+    </div>
+</div>
+
+</body>
+</html>

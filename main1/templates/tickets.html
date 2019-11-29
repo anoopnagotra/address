@@ -1,0 +1,30 @@
+{% include 'base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{title}}</title>
+</head>
+<body>
+<div class="card">
+    <div class="card-header">
+         <button class="btn btn-primary" onclick="location.href = '/test/ticket/';"> Create a new Ticket</button>
+    </div>
+    <div class="card-body">
+        <table class="table">
+            <thead class="bg-dark text-light">
+                <td>Ticket Name</td>
+                <td>Event</td>
+                <td>QR CODE</td>
+            </thead>
+            {% for record in records %}
+            <tr>
+                <td>{{record.ticket_name}}</td>
+                <td>{{record.event_id}}</td>
+                <td><img src="http://chart.apis.google.com/chart?cht=qr&chs=80x80&chl={{record.ticket_id}}{{record.ticket_name}}{{record.event_id}}" height="80px" width="80px"/></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+</body>
+</html>

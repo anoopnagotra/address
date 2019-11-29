@@ -1,0 +1,22 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+{{ form.media }}
+
+{% block nav %}
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
+      <div class="navbar-nav mr-auto justify-content-between bg-secondary">
+            <a class="navbar-brand ml-2 mr-2 btn" role="button" href="/authors/">
+                Author
+            </a>
+      </div>
+    <div class="navbar-nav ml-auto justify-content-between bg-secondary">
+        <a class="navbar-brand ml-2 mr-2 btn" role="button" href="/logout/">
+            Sign out ({{ user.get_username }})
+        </a>
+    </div>
+
+  </nav>
+{% endblock %}
+{% block container %}
+{% endblock %}
