@@ -37,7 +37,7 @@ deactivate () {
 # unset irrelavent variables
 deactivate nondestructive
 
-VIRTUAL_ENV="/home/anoop/python_projects/address/env"
+VIRTUAL_ENV="/home/ubuntu/address/env"
 export VIRTUAL_ENV
 
 _OLD_VIRTUAL_PATH="$PATH"
