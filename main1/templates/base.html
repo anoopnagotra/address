@@ -1,5 +1,9 @@
 {% load bootstrap4 %}
+{% load static %}
 {% bootstrap_css %}
+
+<script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+
 {% bootstrap_javascript jquery='full' %}
 {{ form.media }}
 
@@ -17,6 +21,19 @@
     </div>
 
   </nav>
+
+
+<script src="{% static 'js/jquery.validate.min.js' %}"></script>
+<script src="{% static 'js/jquery.validate.js' %}"></script>
+<script src="{% static 'js/validations.js' %}"></script>
+<script>
+    $.ajaxSetup({
+        data: {
+          csrfmiddlewaretoken: '{{ csrf_token }}'
+        }
+    });
+</script>
+
 {% endblock %}
 {% block container %}
 {% endblock %}

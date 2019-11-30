@@ -10,9 +10,9 @@
          <button class="btn btn-primary" onclick="location.href = '/authors/first_name_field-last_name_field';"> Create a new Author</button>
     </div> -->
     <div> <label> Enter Url : <b> {{url}} </b></label> <br>
-        Contact link is :  <b> {% if contact_url %} {{contact_url}} {% else %} Sorry no Address {%endif%}</b> <br>
+        Contact link is :  <b> {% if contact_url %} {{contact_url}} {% else %} Oops, no url is found {%endif%}</b> <br>
     <div style="margin-top: 40px">
-        <form method="POST" action="/authors/contact_page">
+        <form method="POST" id="contact_page_form" action="/authors/contact_page">
             {% csrf_token %}
               Enter Url:<br> <input type="text" name="url"><br>
               <input type="submit" name="Check" value="Check Contact Page">

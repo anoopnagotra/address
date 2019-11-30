@@ -57,54 +57,55 @@ def contact_page(request):
     if request.method == "POST":
         print("Hello")
         base_url = request.POST['url']
+        if base_url:
         
-        # urls = ['https://en.xlpat.com/','https://www.zapbuild.com/','http://www.ultratechcement.com/','https://www.chicmic.in/']
-        # base_url = urls[3]
-        # html_page = urlopen("https://arstechnica.com")
-        html_page = urlopen(base_url)
+            # urls = ['https://en.xlpat.com/','https://www.zapbuild.com/','http://www.ultratechcement.com/','https://www.chicmic.in/']
+            # base_url = urls[3]
+            # html_page = urlopen("https://arstechnica.com")
+            html_page = urlopen(base_url)
 
-        # for link in soup.find_all('a'):    # extract link url from the anchor    anchor = link.attrs[“href”] if “href” in link.attrs else ‘’
+            # for link in soup.find_all('a'):    # extract link url from the anchor    anchor = link.attrs[“href”] if “href” in link.attrs else ‘’
 
-        soup = BeautifulSoup(html_page)
-        links = []
+            soup = BeautifulSoup(html_page)
+            links = []
 
-        for link in soup.findAll('a', attrs={'href': re.compile("^")}):
-            links.append(link.get('href'))
+            for link in soup.findAll('a', attrs={'href': re.compile("^")}):
+                links.append(link.get('href'))
 
-        contact_url = []
-        for link in links:
-            if 'contact' in link: 
-                contact_url.append(link)
+            contact_url = []
+            for link in links:
+                if 'contact' in link: 
+                    contact_url.append(link)
 
-        contact_urls = list(set(contact_url))
+            contact_urls = list(set(contact_url))
 
-        print("=========================")
-        print(contact_urls)
-        print("=========================")
+            print("=========================")
+            print(contact_urls)
+            print("=========================")
 
 
-        from nltk import ne_chunk, pos_tag, word_tokenize
-        from nltk.tree import Tree
-        import nltk
-        # nltk.download('punkt')
-        # nltk.download('averaged_perceptron_tagger')
-        nltk.download('maxent_ne_chunker')
+            from nltk import ne_chunk, pos_tag, word_tokenize
+            from nltk.tree import Tree
+            import nltk
+            # nltk.download('punkt')
+            # nltk.download('averaged_perceptron_tagger')
+            nltk.download('maxent_ne_chunker')
 
-        contact_url = []
-        for contact in contact_urls:
-            regex1 = re.compile(r'^(?:http|ftp)s?://', re.IGNORECASE) # http or https
-            regex2 = re.compile(r'(?:/?|[/?]\S+)$', re.IGNORECASE) # internal links
-            print(re.match(regex1, contact) is not None)
-            if re.match(regex1, contact) is not None:
-                contact_url = contact
-            
-            if re.match(regex2, contact) is not None:
-                contact_url = base_url + ""+ contact.replace("/", "")
-            # if re.match("")
-                # contact_url = base_url
-            
-        print("contact_url ==>> : " + str(contact_url))
-        return render(request, "authors.html", {"contact_url": contact_url, "url": base_url})
+            contact_url = []
+            for contact in contact_urls:
+                regex1 = re.compile(r'^(?:http|ftp)s?://', re.IGNORECASE) # http or https
+                regex2 = re.compile(r'(?:/?|[/?]\S+)$', re.IGNORECASE) # internal links
+                print(re.match(regex1, contact) is not None)
+                if re.match(regex1, contact) is not None:
+                    contact_url = contact
+                
+                if re.match(regex2, contact) is not None:
+                    contact_url = base_url + ""+ contact.replace("/", "")
+                # if re.match("")
+                    # contact_url = base_url
+                
+            print("contact_url ==>> : " + str(contact_url))
+            return render(request, "authors.html", {"contact_url": contact_url, "url": base_url})
     return render(request, "authors.html", {"title": "Event", "url": ''})
 
     # words = ['Addesses', 'Address', 'Office']
