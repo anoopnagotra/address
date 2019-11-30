@@ -53,6 +53,7 @@ def contact_page(request):
     import difflib
     from urllib.request import urlopen
     import re 
+    from urllib.request import urlopen, Request
     import itertools
     if request.method == "POST":
         print("Hello")
@@ -62,8 +63,17 @@ def contact_page(request):
             # urls = ['https://en.xlpat.com/','https://www.zapbuild.com/','http://www.ultratechcement.com/','https://www.chicmic.in/']
             # base_url = urls[3]
             # html_page = urlopen("https://arstechnica.com")
-            html_page = urlopen(base_url)
-
+            print("==================")
+            print(base_url)
+            print("==================")
+            try:
+            # headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.3'}
+            # base_url = Request(url=base_url, headers=headers)
+                html_page = urlopen(base_url)
+            except Exception as e:
+                print("====================")
+                return render(request, "authors.html", {"contact_url": "Some is wrong", "url": base_url})
+                print(e)
             # for link in soup.find_all('a'):    # extract link url from the anchor    anchor = link.attrs[“href”] if “href” in link.attrs else ‘’
 
             soup = BeautifulSoup(html_page)
